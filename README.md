@@ -54,6 +54,91 @@ IgnorePkg = refind
 
 ---
 
+# custom terminal
+
+*   **Shell**: [Fish Shell](https://fishshell.com/) (/usr/bin/fish)
+*   chsh -s /usr/bin/fish
+*   reboot app
+*   tema shell OhMyFish
+*   curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+*   omf install bobthefish
+*   omf theme bobthefish
+*   **Prompt**: [Starship](https://starship.rs/) (v1.26.0)
+*   sudo pacman -S fish starship
+*   nano ~/.config/fish/config.fish
+*   Tambahkan baris berikut di bagian paling bawah:
+Cuplikan kode
+
+starship init fish | source
+*   
+*   **Theme (Fish/OMF)**: [bobthefish](https://github.com/oh-my-fish/theme-bobthefish)
+* Font: JetBrainsMono Nerd Font.
+* sudo pacman -S ttf-jetbrains-mono-nerd
+* nano ~/.config/kitty/kitty.conf
+font_family      JetBrainsMono Nerd Font
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        12.0
+
+
+
+hl.monitor({
+    output   = "",
+    mode     = "preferred",
+    position = "auto",
+    scale    = "1",
+})
+
+#####
+
+decoration = {
+    rounding       = 10,
+    rounding_power = 2,
+    
+    -- Change transparency of focused and unfocused windows
+    active_opacity   = 0.1,
+    inactive_opacity = 0.1,
+    
+    shadow = {
+        enabled      = true,
+        range        = 4,
+        render_power = 3,
+        color        = 0xee1a1a1a,
+    },
+    
+    blur = {
+        enabled   = true,
+        size      = 6,
+        passes    = 3,
+        vibrancy  = 0.1696,
+    },
+},
+
+animations = {
+    enabled = true,
+},
+})
+
+######
+
+
+hl.config({
+    misc = {
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+            disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+    },
+})
+
+#######
+
+-- Hanya untuk aplikasi (Kitty, Dolphin, Browser, dll)
+hl.window_rule({
+    name = "app-transparency",
+    match = { class = ".*" }, -- Mengambil semua window aplikasi
+    opacity = 0.8,
+})
+
 ## 6. Animasi wallpaper pakai `awww`
 
 Ambxst secara default render wallpaper-nya sendiri lewat `Image` QML (gambar statis) dan `mpvpaper` (video/gif) di dalam `PanelWindow` yang menempel di `WlrLayer.Background`. Transisi bawaannya cuma fade+zoom pendek dan gak bisa random beda-beda gaya tiap ganti.
